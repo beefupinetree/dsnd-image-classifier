@@ -30,7 +30,7 @@ parser.add_argument("--hidden_units",
                     help="number of neurons per hidden layer",
                     type=int,
                     action='store',
-                    default=10000)
+                    default=1000)
 parser.add_argument("-e", "--epochs",
                     help="number of training epochs",
                     type=int,
