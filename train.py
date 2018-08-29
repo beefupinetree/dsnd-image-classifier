@@ -93,9 +93,8 @@ for param in model.parameters():
 classifier = nn.Sequential(OrderedDict([
                           ('fc1', nn.Linear(25088, args.hidden_units)),
                           ('relu', nn.ReLU()),
-                          ('d1', nn.Dropout(p=0.2)),
+                          ('d1', nn.Dropout(p=0.3)),
                           ('fc2', nn.Linear(args.hidden_units, 102)),
-                          ('d2', nn.Dropout(p=0.2)),
                           ('output', nn.LogSoftmax(dim=1))
                           ]))
 
