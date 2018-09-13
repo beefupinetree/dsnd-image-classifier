@@ -49,10 +49,6 @@ train_dir = os.path.join(data_dir,"train")
 valid_dir = os.path.join(data_dir,"valid")
 test_dir = os.path.join(data_dir,"test")
 
-#train_dir = data_dir + '\\train'
-#valid_dir = data_dir + '\\valid'
-#test_dir = data_dir + '\\test'
-
 # %%
 data_transforms = transforms.Compose([transforms.RandomResizedCrop(224),
                                       transforms.RandomRotation(45),

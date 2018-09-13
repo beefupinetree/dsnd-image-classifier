@@ -119,7 +119,7 @@ inv = {v: k for k, v in idi.items()}    # inverting a dictionary as seen in
 model.to(device)
 
 
-def predict(image_path, model, topk=5):
+def predict(image_path, model, topk):
     ''' Predict the class (or classes) of an image using a trained deep
         learning model.
     '''
@@ -153,7 +153,7 @@ def predict(image_path, model, topk=5):
 # TODO: Display an image along with the top 5 classes
 
 img = process_image(args.img_path)
-probs, classes = predict(args.img_path, model)
+probs, classes = predict(args.img_path, model, args.top_k)
 
 for i in range(0, args.top_k):
     print("{}. the flower power of '{}' is {:.0f}%"
