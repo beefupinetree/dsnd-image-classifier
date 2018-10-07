@@ -100,11 +100,15 @@ The options for training are:
 	--gpu		Automatically selects gpu for training, if available
 ```
 
-Examples
+Examples:
 
+1. Training a model on the data in the flowers directory by using the GPU for 10 epochs.
 ```bash
-python train.py flowers -e 10 --gpu		Trains a model on the data in the flowers directory by using the GPU and training the model for 10 epochs.
-python train.py flowers -a vgg13 --gpu	Trains a neural network on the GPU with a VGG13 architecture
+python train.py flowers -e 10 --gpu
+```
+2. Training a neural network on the GPU with a VGG13 architecture
+```bash
+python train.py flowers -a vgg13 --gpu
 ```
 
 The trained convolutional neural network architectures available in the Torchvision library can be found [here](https://pytorch.org/docs/0.3.0/torchvision/models.html). There are multiple versions of:
