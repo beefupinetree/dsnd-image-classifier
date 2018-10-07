@@ -55,6 +55,7 @@ You can access your newly trained model to classify any JPG picture, including a
 python predict.py "$(pwd)/flowers/test/59/image_05020.jpg" checkpoint --top_k 5 --gpu
 ```
 <p align="center"><img src="/img/predict.gif?raw=true"/></p>
+
 ## Images
 
 You must have a collection of labeled images. For example, if we were classifying cats and dogs, each folder must contain instances of each kind of picture. The folder structure must stay as follows:
