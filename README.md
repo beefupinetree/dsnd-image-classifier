@@ -140,9 +140,14 @@ The options for training are:
 --gpu			Automatically selects gpu for predicting, if available
 ```
 
-Examples
+Examples:
 
+Using the saved model in 'checkpoint10' to predict whether 'animalpic' is a picture of a cat or a dog
 ```bash
-python predict.py animalpic.jpg checkpoint10 --top_k 2 --gpu	Uses the saved model in 'checkpoint10' to predict whether 'animalpic' is a picture of a cat or a dog
-python predict.py animalpic.jpg checkpoint10 -category_names cat_to_name.json --gpu	Same thing as above, only this one outputs the names of the categories instead of their number. So we will see 'Cat' and 'Dog' instead of '1' and '2'
+python predict.py animalpic.jpg checkpoint10 --top_k 2 --gpu
+```
+
+Same thing as above, only this one outputs the names of the categories instead of their number. So we will see 'Cat' and 'Dog' instead of '1' and '2'
+```bash
+python predict.py animalpic.jpg checkpoint10 -category_names cat_to_name.json --gpu
 ```
