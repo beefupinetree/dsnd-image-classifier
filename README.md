@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-THe necessary python libraries are:
+The necessary python libraries are:
 
 ```python
 torch
@@ -91,12 +91,12 @@ data_dir	Directory with the labeled images within separate folders for 'test, tr
 The options for training are:
 
 ```
--s, --save_dir  	Directory where the trained model is saved		[string] [default: current directory]
+-s, --save_dir  	Directory where the trained model is saved	[string] [default: current directory]
 -a, --arch  		Architecture of convolutional neural network	[string] [default: vgg19]
--l, --learning_rate Learning rate of the optimizer					[float]	 [default: 0.001]
-	--hidden_units	Number of neurons per hidden layer				[int]	 [default: 1000]
--e, --epochs		Number of training epochs						[int]	 [default: 3]
-	--gpu			Automatically selects gpu for training, if available
+-l, --learning_rate 	Learning rate of the optimizer			[float]	 [default: 0.001]
+	--hidden_units	Number of neurons per hidden layer		[int]	 [default: 1000]
+-e, --epochs		Number of training epochs			[int]	 [default: 3]
+	--gpu		Automatically selects gpu for training, if available
 ```
 
 Examples
@@ -124,14 +124,14 @@ python predict.py <command> [options]
 The command has two mandatory arguments:
 
 ```
-img_path	Path to the image						[string]
+img_path	Path to the image			[string]
 checkpoint	Name of the model checkpoint to load	[string]
 ```
 
 The options for training are:
 ```
--category_names Mapping of categories to real names in JSON	[string]
---top_k  		Top 'k' probable matches					[int] [default: 1]
+-category_names 	Mapping of categories to real names in JSON		[string]
+--top_k  		Top 'k' probable matches				[int] [default: 1]
 --gpu			Automatically selects gpu for predicting, if available
 ```
 
