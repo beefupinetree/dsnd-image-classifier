@@ -11,7 +11,7 @@ parser.add_argument("img_path",
                     help="path to the image",
                     type=str)
 parser.add_argument("checkpoint",
-                    help="model checkpoint to load",
+                    help="name of the model checkpoint to load",
                     type=str,
                     action='store')
 parser.add_argument("--top_k",

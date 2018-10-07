@@ -14,7 +14,7 @@ parser.add_argument("data_dir",
                     help="directory with the data",
                     type=str)
 parser.add_argument("-s", "--save_dir",
-                    help="directory where the model is saved",
+                    help="directory where the trained model is saved",
                     type=str,
                     action='store')
 parser.add_argument("-a", "--arch",
@@ -45,9 +45,9 @@ args = parser.parse_args()
 
 
 data_dir = args.data_dir
-train_dir = os.path.join(data_dir,"train")
-valid_dir = os.path.join(data_dir,"valid")
-test_dir = os.path.join(data_dir,"test")
+train_dir = os.path.join(data_dir, "train")
+valid_dir = os.path.join(data_dir, "valid")
+test_dir = os.path.join(data_dir, "test")
 
 # %%
 data_transforms = transforms.Compose([transforms.RandomResizedCrop(224),
