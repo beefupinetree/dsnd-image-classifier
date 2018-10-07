@@ -1,6 +1,6 @@
 # Image classifier
 
-It can learn from any set of labeled images and be used to label new images. The hyper-parameters can also be modified by the user from the command line itself. Finally the main model itself can be chosen by the user from all the possibilities within the TorchVision.Models library.
+A generic terminal-based image classifier was the final project of the Deep Learning section of the Data Science Nanodegree with Udacity. It can learn from any set of labeled images and be used to label new images. The hyper-parameters can also be modified by the user from the command line itself. Finally the main model itself can be chosen by the user from all the possibilities within the TorchVision.Models library.
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ A step by step series of examples that tell you how to get a development env run
 
 Say what the step will be
 
-To install `Torch` and `Tochvision` using Anaconda:
+To install `Torch` and `Tochvision` using Anaconda with the latest version of `cuda`:
 ```bash
 conda install pytorch cuda92 -c pytorch
 conda install torchvision -c soumith
