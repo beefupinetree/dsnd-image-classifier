@@ -40,6 +40,10 @@ parser.add_argument("-e", "--epochs",
 parser.add_argument("--gpu",
                     help="selects gpu for training, if available",
                     action="store_true")
+parser.add_argument("-j", "--json_path",
+                    help="path to the JSON file with the mapping",
+                    type=str,
+                    action="store")
 
 args = parser.parse_args()
 
@@ -78,7 +82,8 @@ trainloader = DataLoader(image_datasets_train, batch_size=64, shuffle=True)
 validloader = DataLoader(image_datasets_valid, batch_size=64, shuffle=True)
 testloader = DataLoader(image_datasets_test, batch_size=32, shuffle=False)
 
-with open('cat_to_name.json', 'r') as f:
+
+with open(args.json_path + '.json', 'r') as f:
     cat_to_name = json.load(f)
 
 # %%
@@ -128,45 +133,50 @@ def validation(model, testloader, criterion):
 
 
 model.to(device)
+class Neural:
+    def __init__(self, epochs, print_every=32):
+        self.epochs = epochs
+        steps = 0
 
-epochs = args.epochs
-steps = 0
-print_every = 32
-for e in range(epochs):
-    running_loss = 0
-    tot_time = time.time()
-    model.train()
-    for inputs, labels in iter(trainloader):
-        steps += 1
-        # Move input and label tensors to the GPU
-        inputs, labels = inputs.to(device), labels.to(device)
-        start = time.time()
-        optimizer.zero_grad()
-
-        outputs = model.forward(inputs)
-        loss = criterion(outputs, labels)
-        loss.backward()
-        optimizer.step()
-
-        running_loss += loss.item()
-
-        if steps % print_every == 0:
-            # Make sure network is in eval mode for inference
-            model.eval()
-
-            # Turn off gradients for validation, saves memory and computations
-            with torch.no_grad():
-                test_loss, accuracy = validation(model, validloader, criterion)
-            print("Epoch: {}/{}.. ".format(e+1, epochs),
-                  "Training Loss: {:.3f}.. ".format(running_loss/print_every),
-                  "Test Loss: {:.3f}.. ".format(test_loss/len(validloader)),
-                  "Test Accuracy: {:.3f}".format(accuracy/len(validloader)))
-
+    def train():
+        for e in range(epochs):
             running_loss = 0
-
-            # Make sure training is back on
+            tot_time = time.time()
             model.train()
-            running_loss = 0
+            for inputs, labels in iter(trainloader):
+                steps += 1
+                # Move input and label tensors to the GPU
+                inputs, labels = inputs.to(device), labels.to(device)
+                start = time.time()
+                optimizer.zero_grad()
+        
+                outputs = model.forward(inputs)
+                loss = criterion(outputs, labels)
+                loss.backward()
+                optimizer.step()
+        
+                running_loss += loss.item()
+        
+                if steps % print_every == 0:
+                    # Make sure network is in eval mode for inference
+                    model.eval()
+        
+                    # Turn off gradients for validation, saves memory and computations
+                    with torch.no_grad():
+                        test_loss, accuracy = validation(model, validloader, criterion)
+                    print("Epoch: {}/{}.. ".format(e+1, epochs),
+                          "Training Loss: {:.3f}.. ".format(running_loss/print_every),
+                          "Test Loss: {:.3f}.. ".format(test_loss/len(validloader)),
+                          "Test Accuracy: {:.3f}".format(accuracy/len(validloader)))
+        
+                    running_loss = 0
+        
+                    # Make sure training is back on
+                    model.train()
+                    running_loss = 0
+
+
+Neural(args.epochs)
 
 model.class_to_idx = image_datasets_train.class_to_idx
 
