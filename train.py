@@ -82,7 +82,7 @@ trainloader = DataLoader(image_datasets_train, batch_size=64, shuffle=True)
 validloader = DataLoader(image_datasets_valid, batch_size=64, shuffle=True)
 testloader = DataLoader(image_datasets_test, batch_size=32, shuffle=False)
 
-
+# JSON file must be organized as shown in the readme
 with open(args.json_path + '.json', 'r') as f:
     cat_to_name = json.load(f)
 
