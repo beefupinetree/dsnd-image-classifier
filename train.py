@@ -133,6 +133,7 @@ def validation(model, testloader, criterion):
 
 
 model.to(device)
+# put finalized class in a separate file
 class Neural:
     def __init__(self, epochs, print_every=32):
         self.epochs = epochs
