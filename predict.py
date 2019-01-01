@@ -32,15 +32,21 @@ args = parser.parse_args()
 
 
 def load_checkpoint(filepath):
-        checkpoint = torch.load(filepath)
-        model = getattr(models, checkpoint['model'])
-        model = model(pretrained=True)
-        model.classifier = checkpoint['classifier']
-        model.load_state_dict(checkpoint['state_dict'])
-        model.class_to_idx = checkpoint['image_datasets']
-        for param in model.parameters():
-            param.requires_grad = False
-        return model
+    '''
+    Input:
+        filepath: full path to the checkpoint of a model saved earlier
+    Output:
+        model: previously saved model loaded in memory
+    '''
+    checkpoint = torch.load(filepath)
+    model = getattr(models, checkpoint['model'])
+    model = model(pretrained=True)
+    model.classifier = checkpoint['classifier']
+    model.load_state_dict(checkpoint['state_dict'])
+    model.class_to_idx = checkpoint['image_datasets']
+    for param in model.parameters():
+        param.requires_grad = False
+    return model
 
 
 model = load_checkpoint(args.checkpoint + '.pth')
